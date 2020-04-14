@@ -1,4 +1,4 @@
-FROM amazonlinux:2018.03
+FROM amazonlinux:2018.03-with-sources
 LABEL maintainer "Cheewai Lai <cheewai.lai@gmail.com>"
 
 ARG NEWRELIC_RPM_URL=http://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
