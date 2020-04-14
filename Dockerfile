@@ -4,9 +4,8 @@ LABEL maintainer "Cheewai Lai <cheewai.lai@gmail.com>"
 ARG NEWRELIC_RPM_URL=http://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
 
 RUN yum -y install epel-release && yum -y update && \
- rpm -i ${NEWRELIC_RPM_URL}
-
-RUN yum -y install \
+ rpm --nogpgcheck -i ${NEWRELIC_RPM_URL} && \
+ yum -y install \
 newrelic-php5 \
 newrelic-php5-common \
 php-channel-amazon \
@@ -334,7 +333,8 @@ xorg-x11-fonts-Type1 \
 xz-devel \
 yum-plugin-upgrade-helper \
 zip \
-zlib-devel
+zlib-devel \
+ && yum clean all
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer.phar
