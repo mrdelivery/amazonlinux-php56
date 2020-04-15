@@ -351,4 +351,9 @@ RUN \
  pecl install protobuf && \
  wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
  tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
- rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+ rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
+ git clone https://github.com/ncopa/su-exec.git /tmp/su-exec && \
+ make -C /tmp/su-exec && \
+ cp -a /tmp/su-exec/su-exec /usr/local/bin/ && \
+ rm -rf /tmp/su-exec*
+
