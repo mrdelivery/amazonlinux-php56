@@ -1,6 +1,7 @@
 FROM amazonlinux:2018.03-with-sources
 LABEL maintainer "Cheewai Lai <cheewai.lai@gmail.com>"
 
+ARG DOCKERIZE_VERSION=v0.6.1
 ARG NEWRELIC_RPM_URL=http://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
 
 RUN yum -y install epel-release && yum -y update \
@@ -347,4 +348,5 @@ RUN \
  sed -i -e "/max_input_time =/ s/= .*/= -1/" /etc/php.ini && \
  sed -i -e "/max_execution_time =/ s/= .*/= 600/" /etc/php.ini && \
  pecl install grpc && \
- pecl install protobuf
+ pecl install protobuf && \
+ wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \                             tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \                                                                                rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
