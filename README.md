@@ -1,4 +1,4 @@
-# Amazon Linux 18.03 with PHP 5.6
+# Amazon Linux with PHP 5.6
 
 ## CAVEAT 
 

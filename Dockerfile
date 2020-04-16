@@ -346,8 +346,7 @@ RUN \
  export COMPOSER_HOME=/root && /usr/bin/composer.phar self-update && \
  ln -f -s /usr/lib64/libfbclient.so.2.5.4 /usr/lib64/libfbclient.so.2 && \
  ln -f -s /usr/lib64/libfbclient.so.2 /usr/lib64/libfbclient.so && \
- sed -i -e "/max_input_time =/ s/= .*/= -1/" /etc/php.ini && \
- sed -i -e "/max_execution_time =/ s/= .*/= 600/" /etc/php.ini && \
+ pecl channel-update pecl.php.net && \
  pecl install grpc && \
  pecl install protobuf && \
  wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
@@ -357,3 +356,15 @@ RUN \
  make -C /tmp/su-exec && \
  cp -a /tmp/su-exec/su-exec /usr/local/bin/ && \
  rm -rf /tmp/su-exec*
+
+RUN wget -q -O /usr/bin/anrp https://raw.githubusercontent.com/acacia-cloud/anrp/master/anrp && \
+ chmod 555 /usr/bin/anrp 
+
+
+# Merge addition and modification into existing /etc/
+COPY ./etc /etc
+
+COPY ./downloads/*.so /usr/lib64/php/5.6/modules/
+
+COPY ./downloads/s3fs-fuse-1.79-1.amzn1.x86_64.rpm /tmp/
+RUN yum install -y /tmp/s3fs-fuse-1.79-1.amzn1.x86_64.rpm
