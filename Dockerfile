@@ -5,9 +5,10 @@ ARG DOCKERIZE_VERSION=v0.6.1
 ARG NEWRELIC_RPM_URL=http://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
 
 RUN yum -y install epel-release \
- && rpm --nosignature -i ${NEWRELIC_RPM_URL} \
- && yum update \
+ && rpm --nosignature -Uvh ${NEWRELIC_RPM_URL} \
+ && yum -y update \
  && yum -y install \
+newrelic-sysmond \
 newrelic-php5 \
 newrelic-php5-common \
 php-channel-amazon \
