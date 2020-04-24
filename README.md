@@ -2,6 +2,7 @@
 
 ## CAVEAT 
 
-Do not use this image unless you absolutely must because
-many RPM packages have been retired by AWS.
+- Do not use this image unless you absolutely must because
+many RPM packages have been retired by AWS
 
+- Bump version file when Dockerfile is updated
