@@ -365,7 +365,10 @@ RUN wget -q -O /usr/bin/anrp https://raw.githubusercontent.com/acacia-cloud/anrp
 # Merge addition and modification into existing /etc/
 COPY ./etc /etc
 
-COPY ./downloads/*.so /usr/lib64/php/5.6/modules/
+COPY ./downloads/interbase.so /usr/lib64/php/5.6/modules/interbase.so
+COPY ./downloads/pdo.so /usr/lib64/php/5.6/modules/pdo.so
+COPY ./downloads/pdo_firebird.so /usr/lib64/php/5.6/modules/pdo_firebird.so
+COPY ./downloads/libfbclient.so.2.5.4 /usr/lib64/libfbclient.so.2.5.4
 
 COPY ./downloads/s3fs-fuse-1.79-1.amzn1.x86_64.rpm /tmp/
 RUN yum install -y /tmp/s3fs-fuse-1.79-1.amzn1.x86_64.rpm
