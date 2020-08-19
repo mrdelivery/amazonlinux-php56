@@ -347,10 +347,13 @@ RUN \
  export COMPOSER_HOME=/root && /usr/bin/composer.phar self-update && \
  ln -f -s /usr/lib64/libfbclient.so.2.5.4 /usr/lib64/libfbclient.so.2 && \
  ln -f -s /usr/lib64/libfbclient.so.2 /usr/lib64/libfbclient.so && \
- pecl channel-update pecl.php.net && \
- pecl install grpc && \
- pecl install protobuf && \
- wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
+ pecl channel-update pecl.php.net
+
+RUN pecl install grpc
+
+RUN pecl install -f protobuf-3.12.4
+
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
  tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
  rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
  git clone https://github.com/ncopa/su-exec.git /tmp/su-exec && \
