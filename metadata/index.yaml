@@ -1,0 +1,5 @@
+amazonlinux-php56:
+    description: amazonlinux-php56
+    repo: https://github.com/TAKEALOT/amazonlinux-php56
+    team: DEVOPS
+    metrics: []
