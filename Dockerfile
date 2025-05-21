@@ -348,8 +348,8 @@ RUN \
  ln -f -s /usr/lib64/libfbclient.so.2.5.4 /usr/lib64/libfbclient.so.2 && \
  ln -f -s /usr/lib64/libfbclient.so.2 /usr/lib64/libfbclient.so && \
  pecl channel-update pecl.php.net && \
- pecl install grpc && \
- pecl install protobuf && \
+ pecl install grpc-1.9.0 && \
+ pecl install -f protobuf-3.12.4 && \
  wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
  tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
  rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
