@@ -359,7 +359,8 @@ RUN \
  rm -rf /tmp/su-exec*
 
 # Merge addition and modification into existing /etc/
-COPY ./etc /etc
+RUN if [ -f /etc/php-fpm.d ]; then rm /etc/php-fpm.d; fi
+COPY ./etc/ /etc/
 
 COPY ./downloads/interbase.so /usr/lib64/php/5.6/modules/interbase.so
 COPY ./downloads/pdo.so /usr/lib64/php/5.6/modules/pdo.so
