@@ -358,8 +358,12 @@ RUN \
  cp -a /tmp/su-exec/su-exec /usr/local/bin/ && \
  rm -rf /tmp/su-exec*
 
+RUN ls -lR /etc/
+
+COPY ./etc/ /tmp/test/etc/
+RUN ls -lR /tmp/test/etc/
+
 # Merge addition and modification into existing /etc/
-RUN if [ -f /etc/php-fpm.d ]; then rm /etc/php-fpm.d; fi
 COPY ./etc/ /etc/
 
 COPY ./downloads/interbase.so /usr/lib64/php/5.6/modules/interbase.so
