@@ -358,10 +358,6 @@ RUN \
  cp -a /tmp/su-exec/su-exec /usr/local/bin/ && \
  rm -rf /tmp/su-exec*
 
-RUN wget -q -O /usr/bin/anrp https://raw.githubusercontent.com/acacia-cloud/anrp/master/anrp && \
- chmod 555 /usr/bin/anrp 
-
-
 # Merge addition and modification into existing /etc/
 COPY ./etc /etc
 
